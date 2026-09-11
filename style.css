@@ -1,6 +1,4 @@
-/* ============================================
-   RESET
-   ============================================ */
+
 * {
   margin: 0;
   padding: 0;
@@ -37,9 +35,6 @@ body::before {
   66% { transform: translate(-30px, 30px) scale(0.95); }
 }
 
-/* ============================================
-   NAVBAR
-   ============================================ */
 .navbar {
   position: sticky;
   top: 0;
@@ -151,9 +146,7 @@ body::before {
   margin-left: auto;
 }
 
-/* ============================================
-   CONTAINER
-   ============================================ */
+
 .container {
   display: grid;
   max-width: 1280px;
@@ -164,9 +157,7 @@ body::before {
   padding: 24px;
 }
 
-/* ============================================
-   BOX
-   ============================================ */
+
 .box {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px) saturate(180%);
@@ -215,9 +206,7 @@ body::before {
   min-height: 300px;
 }
 
-/* ============================================
-   STATS
-   ============================================ */
+
 .stat-label {
   font-size: 11px;
   color: rgba(255, 255, 255, 0.5);
@@ -238,9 +227,6 @@ body::before {
 #avgValue { color: #4af; }
 #slowestValue { color: #fbbf24; }
 
-/* ============================================
-   CHART
-   ============================================ */
 .chart-wrapper {
   position: relative;
   width: 100%;
@@ -253,9 +239,7 @@ body::before {
   height: 100% !important;
 }
 
-/* ============================================
-   SLOWEST ENDPOINTS
-   ============================================ */
+
 .box.endpoint {
   grid-column: span 2;
   min-height: 280px;
@@ -336,9 +320,7 @@ body::before {
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* ============================================
-   RECENT ISSUES
-   ============================================ */
+
 .box.issue {
   grid-column: span 2;
   min-height: 280px;
@@ -401,9 +383,7 @@ body::before {
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* ============================================
-   LIVE FEED
-   ============================================ */
+
 .box.live-feed {
   grid-column: 1 / 5;
   min-height: 300px;
@@ -509,9 +489,7 @@ body::before {
   flex-shrink: 0;
 }
 
-/* ============================================
-   SCROLLBARS
-   ============================================ */
+
 #liveFeed::-webkit-scrollbar,
 #slowestList::-webkit-scrollbar,
 #recentIssues::-webkit-scrollbar {
@@ -545,9 +523,7 @@ body::before {
   font-size: 13px;
 }
 
-/* ============================================
-   TABLET (max 1024px)
-   ============================================ */
+
 @media (max-width: 1024px) {
   .navbar {
     padding: 0 24px;
@@ -584,9 +560,6 @@ body::before {
   }
 }
 
-/* ============================================
-   MOBILE (max 768px)
-   ============================================ */
 @media (max-width: 768px) {
   /* ===== NAVBAR ===== */
   .navbar {
@@ -648,14 +621,12 @@ body::before {
     padding: 10px 16px;
   }
 
-  /* ===== CONTAINER ===== */
   .container {
     grid-template-columns: repeat(2, 1fr);
     padding: 14px;
     gap: 12px;
   }
 
-  /* ===== STATS — 2 columns, 2 rows ===== */
   .total, .fail, .average, .slowest {
     grid-column: span 1;
     min-height: 100px;
@@ -672,7 +643,6 @@ body::before {
     margin-bottom: 8px;
   }
 
-  /* ===== CHART — Full width ===== */
   .request {
     grid-column: 1 / 3;
     min-height: 300px;
@@ -683,7 +653,6 @@ body::before {
     height: 220px;
   }
 
-  /* ===== SLOWEST ENDPOINTS — Full width ===== */
   .box.endpoint {
     grid-column: 1 / 3;
     min-height: 240px;
@@ -716,7 +685,6 @@ body::before {
     min-width: 50px;
   }
 
-  /* ===== RECENT ISSUES — Full width ===== */
   .box.issue {
     grid-column: 1 / 3;
     min-height: 240px;
@@ -736,7 +704,6 @@ body::before {
     font-size: 10px;
   }
 
-  /* ===== LIVE FEED — Full width ===== */
   .box.live-feed {
     grid-column: 1 / 3;
     min-height: 260px;
@@ -788,9 +755,7 @@ body::before {
   }
 }
 
-/* ============================================
-   SMALL MOBILE (max 480px)
-   ============================================ */
+
 @media (max-width: 480px) {
   .navbar {
     padding: 10px 12px;
@@ -834,7 +799,6 @@ body::before {
     min-height: 260px;
   }
 
-  /* Feed mein timestamp hide karo */
   .feed-timestamp {
     display: none;
   }

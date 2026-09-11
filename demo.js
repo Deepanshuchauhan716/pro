@@ -25,9 +25,6 @@ function clearAllData() {
     }
 }
 
-// ============================================
-// RANDOM API POOL — Different Real APIs
-// ============================================
 
 const API_POOL = [
     // JSONPlaceholder — different endpoints
@@ -64,9 +61,6 @@ const API_POOL = [
     { url: 'https://official-joke-api.appspot.com/random_joke', method: 'GET', type: 'fast' },
 ];
 
-// ============================================
-// AUTO DEMO — 20 Random API Calls
-// ============================================
 
 let isRunning = false;
 
@@ -124,10 +118,6 @@ async function runAutoDemo() {
     btn.innerText = '⚡ Run Auto Demo (20 Random APIs)';
     isRunning = false;
 }
-
-// ============================================
-// MANUAL BUTTONS — Random APIs
-// ============================================
 
 async function callFastAPI() {
     const apis = [

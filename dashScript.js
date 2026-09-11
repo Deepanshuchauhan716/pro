@@ -230,9 +230,6 @@ function timeAgo(timestamp) {
     return Math.floor(s / 86400) + 'd ago';
 }
 
-// LIVE FEED
-// ============================================
-
 function renderLiveFeed() {
     const logs = JSON.parse(localStorage.getItem('apibreak_logs')) || [];
     const el = document.getElementById('liveFeed');

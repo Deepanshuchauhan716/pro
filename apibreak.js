@@ -1,4 +1,3 @@
-// apibreak.js - API Interceptor
 (function() {
   const originalFetch = window.fetch;
   const STORAGE_KEY = 'apibreak_logs';

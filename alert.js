@@ -20,7 +20,6 @@ function generateAlerts() {
 
     if (logs.length === 0) return alerts;
 
-    // ===== ENDPOINT-WISE ANALYSIS =====
     const endpointStats = {};
 
     logs.forEach(log => {
@@ -44,7 +43,6 @@ function generateAlerts() {
         s.statuses[log.status] = (s.statuses[log.status] || 0) + 1;
     });
 
-    // ===== ALERT RULES =====
 
     Object.values(endpointStats).forEach(stat => {
         const avgTime = Math.round(stat.totalTime / stat.total);
@@ -54,7 +52,6 @@ function generateAlerts() {
             shortUrl = new URL(stat.url).pathname;
         } catch (e) {}
 
-        // RULE 1: High failure rate
         if (failRate > 30) {
             const statusCodes = Object.keys(stat.statuses).join(', ');
             alerts.push({
@@ -78,7 +75,6 @@ function generateAlerts() {
             });
         }
 
-        // RULE 2: Slow endpoint
         if (avgTime > 2000) {
             alerts.push({
                 severity: 'critical',
@@ -115,7 +111,6 @@ function generateAlerts() {
         }
     });
 
-    // ===== SORT BY SEVERITY =====
     const order = { critical: 0, warning: 1, info: 2 };
     alerts.sort((a, b) => order[a.severity] - order[b.severity]);
 
