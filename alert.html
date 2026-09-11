@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts — APIBreak</title>
+    <link rel="stylesheet" href="alert.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="nav-logo">⚡</span>
+            <span class="nav-title">APIBreak</span>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="logs.html">Logs</a></li>
+            <li><a href="endpoints.html">Endpoints</a></li>
+            <li><a href="alert.html" class="active">Alerts</a></li>
+            <li><a href="demo.html">Demo</a></li>
+            <li><a href="landingpage.html">Home</a></li>
+        </ul>
+
+        <div class="nav-status">
+            <span class="live-dot"></span> LIVE
+        </div>
+
+        <button class="nav-toggle" onclick="toggleNav()">☰</button>
+    </nav>
+
+    <div class="alerts-wrapper">
+
+        <div class="alerts-header">
+            <div class="alerts-title">
+                <span class="alerts-icon">🚨</span>
+                <div>
+                    <h1>Alerts</h1>
+                    <p class="alerts-subtitle" id="alertCount">0 active alerts requiring attention</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="alertsList" class="alerts-list"></div>
+
+    </div>
+
+    <script src="alert.js"></script>
+    <script>
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>

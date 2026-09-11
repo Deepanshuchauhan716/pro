@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="landingpage.css">
+</head>
+<body>
+    <nav class="nav-bar">
+    <div class="nav-brand">
+        <span class="nav-logo">⚡</span>
+        <span class="nav-tittle">APIbreak</span>
+    </div>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+
+        </ul>
+
+        <div class="nav-action">
+            <a href="dashboard.html" class="btn btn-primary">Get started -></a>
+        </div>
+        <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+    </nav>
+
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Real-time API Monitoring
+                </div>
+                <h1 class="hero-title">
+                    Monitor Your APIs<br>
+                    <span class="gradient-text">In Real-Time</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Zero-config API monitoring for developers. Track failures, latency spikes,
+                    and performance issues — all from your browser. No backend, no signup, no hassle.
+                </p>
+                <div class="hero-buttons">
+                    <a href="dashboard.html" class="btn btn-primary btn-lg">
+                        📊 Open Dashboard
+                    </a>
+                    <a href="demo.html" class="btn btn-glass btn-lg">
+                        🧪 Try Live Demo
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">0ms</div>
+                        <div class="hero-stat-label">Setup Time</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">2 lines</div>
+                        <div class="hero-stat-label">To Install</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">100%</div>
+                        <div class="hero-stat-label">Client-Side</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="hero-visual">
+                <div class="floating-card card-1">
+                    <div class="card-icon success">✅</div>
+                    <div class="card-content">
+                        <div class="card-label">GET /api/users</div>
+                        <div class="card-value">240ms</div>
+                    </div>
+                </div>
+                <div class="floating-card card-2">
+                    <div class="card-icon fail">❌</div>
+                    <div class="card-content">
+                        <div class="card-label">POST /api/login</div>
+                        <div class="card-value">500 Error</div>
+                    </div>
+                </div>
+                <div class="floating-card card-3">
+                    <div class="card-icon slow">🐌</div>
+                    <div class="card-content">
+                        <div class="card-label">GET /api/reports</div>
+                        <div class="card-value">2340ms</div>
+                    </div>
+                </div>
+                <div class="floating-card card-4">
+                    <div class="card-icon success">✅</div>
+                    <div class="card-content">
+                        <div class="card-label">PUT /api/profile</div>
+                        <div class="card-value">180ms</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <div class="section-header">
+                <div class="section-badge">Features</div>
+                <h2 class="section-title">Everything You Need</h2>
+                <p class="section-subtitle">Built for developers who hate downtime and love clean data.</p>
+            </div>
+        
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3 class="feature-title">Auto Intercept</h3>
+                    <p class="feature-desc">
+                        Automatically tracks all <code>fetch()</code> and XHR calls.
+                        No manual setup, no config files.
+                    </p>
+                </div>
+        
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">Live Analytics</h3>
+                    <p class="feature-desc">
+                        Real-time charts for response times, failure rates,
+                        and slowest endpoints.
+                    </p>
+                </div>
+        
+                <div class="feature-card">
+                    <div class="feature-icon">🚨</div>
+                    <h3 class="feature-title">Smart Alerts</h3>
+                    <p class="feature-desc">
+                        Auto-detects anomalies — high failure rates, slow endpoints,
+                        and traffic spikes.
+                    </p>
+                </div>
+        
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3 class="feature-title">Zero Backend</h3>
+                    <p class="feature-desc">
+                        Everything runs in your browser. No servers, no databases,
+                        no signup required.
+                    </p>
+                </div>
+        
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3 class="feature-title">Full History</h3>
+                    <p class="feature-desc">
+                        Searchable logs with filters, CSV export, and
+                        full request details.
+                    </p>
+                </div>
+        
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">Privacy First</h3>
+                    <p class="feature-desc">
+                        Your data never leaves your browser.
+                        100% local storage, 0% cloud.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works" id="how-it-works">
+            <div class="section-header">
+                <div class="section-badge">How It Works</div>
+                <h2 class="section-title">Setup In 30 Seconds</h2>
+                <p class="section-subtitle">
+                    Three simple steps. No configuration needed.
+                </p>
+            </div>
+        
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Add Script</h3>
+                    <p class="step-desc">
+                        Drop one line in your HTML:
+                    </p>
+                    <div class="code-block">
+                        <code>&lt;script src="apibreak.js"&gt;&lt;/script&gt;</code>
+                    </div>
+                </div>
+        
+                <div class="step-arrow">→</div>
+        
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Use Your App</h3>
+                    <p class="step-desc">
+                        Everything works normally. APIBreak tracks in the background.
+                    </p>
+                </div>
+        
+                <div class="step-arrow">→</div>
+        
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Watch Dashboard</h3>
+                    <p class="step-desc">
+                        Open the dashboard to see real-time insights.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="live-stats">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span class="badge-dot"></span>
+                    Live Right Now
+                </div>
+                <h2 class="section-title">Real-Time Insights</h2>
+            </div>
+        
+            <div class="stats-preview">
+                <div class="preview-card">
+                    <div class="preview-label">📞 Total Requests</div>
+                    <div class="preview-value" id="previewTotal">0</div>
+                </div>
+                <div class="preview-card">
+                    <div class="preview-label">❌ Failed</div>
+                    <div class="preview-value red" id="previewFailed">0</div>
+                </div>
+                <div class="preview-card">
+                    <div class="preview-label">⏱️ Avg Latency</div>
+                    <div class="preview-value blue" id="previewAvg">0ms</div>
+                </div>
+                <div class="preview-card">
+                    <div class="preview-label">✅ Success Rate</div>
+                    <div class="preview-value green" id="previewRate">0%</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Monitor?</h2>
+                <p class="cta-subtitle">
+                    Start tracking your APIs in 30 seconds. No signup required.
+                </p>
+                <div class="cta-buttons">
+                    <a href="dashboard.html" class="btn btn-primary btn-lg">
+                        📊 Open Dashboard
+                    </a>
+                    <a href="demo.html" class="btn btn-glass btn-lg">
+                        🧪 Try Demo
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="nav-logo">⚡</span>
+                    <span class="nav-title">APIBreak</span>
+                    <p class="footer-tagline">
+                        Built for developers who hate downtime.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <div class="footer-heading">Product</div>
+                        <a href="dashboard.html">Dashboard</a>
+                        <a href="logs.html">Logs</a>
+                        <a href="endpoints.html">Endpoints</a>
+                        <a href="alert.html">Alerts</a>
+                    </div>
+                    <div class="footer-column">
+                        <div class="footer-heading">Demo</div>
+                        <a href="demo.html">Try It Live</a>
+                        <a href="landingpage.html">Home</a>
+                    </div>
+                    <div class="footer-column">
+                        <div class="footer-heading">Tech</div>
+                        <a href="#">JavaScript</a>
+                        <a href="#">Chart.js</a>
+                        <a href="#">localStorage</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 APIBreak. Built with ❤️ for developers.</p>
+            </div>
+        </footer>
+</body>
+<script>
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
+    }
+</script>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try It Live — APIBreak</title>
+    <link rel="stylesheet" href="demo.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="nav-logo">⚡</span>
+            <span class="nav-title">APIBreak</span>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="logs.html">Logs</a></li>
+            <li><a href="endpoints.html">Endpoints</a></li>
+            <li><a href="alert.html">Alerts</a></li>
+            <li><a href="demo.html" class="active">Demo</a></li>
+            <li><a href="landingpage.html">Home</a></li>
+        </ul>
+
+        <div class="nav-status">
+            <span class="live-dot"></span> LIVE
+        </div>
+
+        <button class="nav-toggle" onclick="toggleNav()">☰</button>
+    </nav>
+
+    <div class="demo-wrapper">
+
+        <div class="demo-header">
+            <h1>🧪 Try It Live</h1>
+            <p class="demo-subtitle">
+                Trigger a sample API call and watch it appear in your monitoring feed.
+            </p>
+        </div>
+
+        <div class="demo-grid">
+
+            <button class="demo-btn fast" onclick="callFastAPI()">
+                <span class="demo-icon">✅</span>
+                <span class="demo-title">Fast API</span>
+                <span class="demo-desc">Simulates a healthy 200 response in ~150ms</span>
+            </button>
+
+            <button class="demo-btn slow" onclick="callSlowAPI()">
+                <span class="demo-icon">⏱️</span>
+                <span class="demo-title">Slow API</span>
+                <span class="demo-desc">Simulates a slow 2000ms+ response</span>
+            </button>
+
+            <button class="demo-btn fail" onclick="callFailingAPI()">
+                <span class="demo-icon">❌</span>
+                <span class="demo-title">Failing API</span>
+                <span class="demo-desc">Simulates a 500 Internal Server Error</span>
+            </button>
+
+            <button class="demo-btn network" onclick="callNetworkFail()">
+                <span class="demo-icon">💥</span>
+                <span class="demo-title">Network Fail</span>
+                <span class="demo-desc">Simulates a dropped connection / timeout</span>
+            </button>
+
+        </div>
+
+        <div class="console-panel">
+            <div class="console-header">
+                <span class="console-title">&gt; Output Console</span>
+                <button class="console-clear" onclick="clearConsole()" title="Clear">🗑️</button>
+            </div>
+            <div class="console-body" id="consoleBody">
+                <div class="console-line info">
+                    <span class="prompt">$</span>
+                    <span class="text">Ready... Click a button to trigger an API call</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-footer">
+            <a href="dashboard.html" class="demo-link">
+                📊 Dashboard pe jaao aur dekho →
+            </a>
+        </div>
+
+    </div>
+
+    <script src="apibreak.js"></script>
+    <script src="demo.js"></script>
+    <script>
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logs — APIBreak</title>
+    <link rel="stylesheet" href="logs.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="nav-logo">⚡</span>
+            <span class="nav-title">APIBreak</span>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="logs.html" class="active">Logs</a></li>
+            <li><a href="endpoints.html">Endpoints</a></li>
+            <li><a href="alerts.html">Alerts</a></li>
+            <li><a href="demo.html">Demo</a></li>
+            <li><a href="landingpage.html">Home</a></li>
+        </ul>
+
+        <div class="nav-status">
+            <span class="live-dot"></span> LIVE
+        </div>
+
+        <button class="nav-toggle" onclick="toggleNav()">☰</button>
+    </nav>
+
+    <!-- LOGS WRAPPER -->
+    <div class="logs-wrapper">
+
+        <!-- HEADER -->
+        <div class="logs-header">
+            <div class="logs-title">
+                <span class="logs-icon">📋</span>
+                <div>
+                    <h1>Logs</h1>
+                    <p class="logs-subtitle">Full request history</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FILTER BAR -->
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">All</button>
+            <button class="filter-btn" data-filter="success" onclick="setFilter('success')">✅ Success</button>
+            <button class="filter-btn" data-filter="failed" onclick="setFilter('failed')">❌ Failed</button>
+            <button class="filter-btn" data-filter="slow" onclick="setFilter('slow')">🐌 Slow</button>
+
+            <div class="search-wrapper">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Search by URL, method, status..."
+                    oninput="renderLogs()">
+            </div>
+
+            <button class="csv-btn" onclick="exportCSV()">📥 CSV</button>
+        </div>
+
+        <!-- LOGS PANEL -->
+        <div class="logs-panel">
+            <div id="logsList"></div>
+        </div>
+
+    </div>
+
+    <script src="logs.js"></script>
+    <script>
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,608 @@
+/* ============================================
+   APIBreak — Alerts Page CSS (Responsive)
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0a0a1a;
+    color: #ffffff;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(68, 170, 255, 0.4), transparent 45%),
+        radial-gradient(circle at 80% 20%, rgba(164, 68, 255, 0.4), transparent 45%),
+        radial-gradient(circle at 50% 80%, rgba(244, 68, 170, 0.3), transparent 45%),
+        radial-gradient(circle at 90% 70%, rgba(68, 255, 170, 0.3), transparent 45%);
+    z-index: -1;
+    filter: blur(60px);
+    animation: float 25s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -40px) scale(1.1); }
+    66% { transform: translate(-30px, 30px) scale(0.95); }
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    background: rgba(10, 10, 26, 0.6);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.nav-logo {
+    font-size: 22px;
+    background: linear-gradient(135deg, #4af, #a4f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-title {
+    background: linear-gradient(135deg, #4af, #a4f, #f4a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 6px;
+    list-style: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-links a.active {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.nav-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.1);
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    padding: 6px 14px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    flex-shrink: 0;
+}
+
+.live-dot {
+    width: 8px;
+    height: 8px;
+    background: #4ade80;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+    box-shadow: 0 0 10px #4ade80;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: auto;
+}
+
+.alerts-wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    width: 100%;
+}
+
+.alerts-header {
+    margin-bottom: 32px;
+}
+
+.alerts-title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.alerts-icon {
+    font-size: 42px;
+    line-height: 1;
+}
+
+.alerts-title h1 {
+    font-size: 38px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+}
+
+.alerts-subtitle {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 4px;
+}
+
+.alerts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.alert-card {
+    padding: 20px 24px;
+    border-radius: 18px;
+    border: 1px solid;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.alert-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.alert-card.critical {
+    background: rgba(248, 113, 113, 0.05);
+    border-color: rgba(248, 113, 113, 0.25);
+    box-shadow: 
+        0 8px 32px rgba(248, 113, 113, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.alert-card.warning {
+    background: rgba(251, 191, 36, 0.05);
+    border-color: rgba(251, 191, 36, 0.25);
+    box-shadow: 
+        0 8px 32px rgba(251, 191, 36, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.alert-card.info {
+    background: rgba(68, 170, 255, 0.05);
+    border-color: rgba(68, 170, 255, 0.25);
+    box-shadow: 
+        0 8px 32px rgba(68, 170, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.alert-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.alert-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.alert-dot::after {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    background: white;
+    opacity: 0.3;
+}
+
+.alert-card.critical .alert-dot {
+    background: #f87171;
+    box-shadow: 0 0 20px rgba(248, 113, 113, 0.6);
+}
+
+.alert-card.warning .alert-dot {
+    background: #fbbf24;
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+}
+
+.alert-card.info .alert-dot {
+    background: #4af;
+    box-shadow: 0 0 20px rgba(68, 170, 255, 0.6);
+}
+
+.alert-card-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #ffffff;
+    flex: 1;
+    min-width: 0;
+}
+
+.alert-badge {
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid;
+    flex-shrink: 0;
+}
+
+.alert-badge.critical {
+    background: rgba(248, 113, 113, 0.15);
+    color: #f87171;
+    border-color: rgba(248, 113, 113, 0.4);
+}
+
+.alert-badge.warning {
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+    border-color: rgba(251, 191, 36, 0.4);
+}
+
+.alert-badge.info {
+    background: rgba(68, 170, 255, 0.15);
+    color: #4af;
+    border-color: rgba(68, 170, 255, 0.4);
+}
+
+.alert-time {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: 'JetBrains Mono', monospace;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.alert-message {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 12px;
+    padding-left: 42px;
+}
+
+.alert-message strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.alert-suggestion {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+    line-height: 1.5;
+    padding-left: 42px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.alert-suggestion::before {
+    content: '💡';
+    flex-shrink: 0;
+}
+
+.alert-empty {
+    text-align: center;
+    padding: 80px 20px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.alert-empty-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.alert-empty-text {
+    font-size: 16px;
+    font-style: italic;
+}
+
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 0 24px;
+    }
+
+    .nav-links {
+        position: static;
+        transform: none;
+        margin: 0 auto;
+        gap: 2px;
+    }
+
+    .nav-links a {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .alerts-wrapper {
+        padding: 32px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        height: auto;
+        padding: 12px 16px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .nav-brand {
+        font-size: 16px;
+    }
+
+    .nav-logo {
+        font-size: 20px;
+    }
+
+    .nav-title {
+        font-size: 18px;
+    }
+
+    .nav-toggle {
+        display: block;
+        order: 3;
+    }
+
+    .nav-status {
+        order: 2;
+        font-size: 12px;
+        padding: 5px 12px;
+        margin-left: auto;
+    }
+
+    .nav-links {
+        display: none;
+        position: static;
+        transform: none;
+        width: 100%;
+        order: 4;
+        flex-direction: column;
+        gap: 4px;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 10px 16px;
+    }
+
+    .alerts-wrapper {
+        padding: 24px 14px;
+    }
+
+    .alerts-header {
+        margin-bottom: 20px;
+    }
+
+    .alerts-title {
+        gap: 12px;
+    }
+
+    .alerts-icon {
+        font-size: 32px;
+    }
+
+    .alerts-title h1 {
+        font-size: 26px;
+    }
+
+    .alerts-subtitle {
+        font-size: 12px;
+    }
+
+    .alert-card {
+        padding: 16px 18px;
+        border-radius: 16px;
+    }
+
+    .alert-header {
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+
+    .alert-dot {
+        width: 22px;
+        height: 22px;
+    }
+
+    .alert-dot::after {
+        inset: 6px;
+    }
+
+    .alert-card-title {
+        font-size: 15px;
+        order: 2;
+        width: 100%;
+        flex: 0 0 100%;
+    }
+
+    .alert-badge {
+        font-size: 9px;
+        padding: 3px 8px;
+        order: 1;
+    }
+
+    .alert-time {
+        font-size: 11px;
+        order: 3;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .alert-message {
+        font-size: 13px;
+        padding-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .alert-suggestion {
+        font-size: 12px;
+        padding-left: 0;
+    }
+
+    .alert-empty {
+        padding: 50px 16px;
+    }
+
+    .alert-empty-icon {
+        font-size: 48px;
+    }
+
+    .alert-empty-text {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 12px;
+    }
+
+    .nav-brand {
+        font-size: 15px;
+    }
+
+    .nav-title {
+        font-size: 16px;
+    }
+
+    .nav-logo {
+        font-size: 18px;
+    }
+
+    .alerts-wrapper {
+        padding: 20px 12px;
+    }
+
+    .alerts-icon {
+        font-size: 28px;
+    }
+
+    .alerts-title h1 {
+        font-size: 22px;
+    }
+
+    .alerts-subtitle {
+        font-size: 11px;
+    }
+
+    .alert-card {
+        padding: 14px 16px;
+        border-radius: 14px;
+    }
+
+    .alert-header {
+        gap: 8px;
+    }
+
+    .alert-dot {
+        width: 18px;
+        height: 18px;
+    }
+
+    .alert-dot::after {
+        inset: 5px;
+    }
+
+    .alert-card-title {
+        font-size: 14px;
+    }
+
+    .alert-badge {
+        font-size: 8px;
+        padding: 2px 7px;
+    }
+
+    .alert-time {
+        font-size: 10px;
+    }
+
+    .alert-message {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .alert-suggestion {
+        font-size: 11px;
+    }
+}
