@@ -382,6 +382,31 @@ body::before {
     transform: translateY(-2px);
 }
 
+.clear-data-btn {
+    display: block;
+    margin: 0 auto 32px auto;
+    padding: 12px 28px;
+    border-radius: 12px;
+    border: 1px solid rgba(248, 113, 113, 0.3);
+    background: rgba(248, 113, 113, 0.08);
+    color: #f87171;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.clear-data-btn:hover {
+    background: rgba(248, 113, 113, 0.15);
+    border-color: rgba(248, 113, 113, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(248, 113, 113, 0.2);
+}
+
+.clear-data-btn:active {
+    transform: translateY(0);
+}
 @media (max-width: 1024px) {
     .navbar {
         padding: 0 24px;

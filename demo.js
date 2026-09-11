@@ -1,6 +1,3 @@
-// ============================================
-// demo.js — Demo Page with Real Random APIs
-// ============================================
 
 const consoleBody = document.getElementById('consoleBody');
 
@@ -21,7 +18,7 @@ function clearConsole() {
 }
 
 function clearAllData() {
-    if (confirm('Saara data clear karne hain?')) {
+    if (confirm('Are you sure')) {
         localStorage.removeItem('apibreak_logs');
         consoleBody.innerHTML = '';
         log('info', '✅ All data cleared');
