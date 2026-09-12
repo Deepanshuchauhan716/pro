@@ -26,12 +26,8 @@ function initChart() {
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            animation: {
-                duration: 500
-            },
-            plugins: {
-                legend: { display: false }
-            },
+            animation: { duration: 500 },
+            plugins: { legend: { display: false } },
             scales: {
                 y: {
                     beginAtZero: true,
@@ -47,22 +43,20 @@ function initChart() {
     });
 }
 
-
 function prepareChartData() {
     const logs = JSON.parse(localStorage.getItem('apibreak_logs')) || [];
     if (logs.length === 0) return { labels: [], data: [] };
 
     const now = Date.now();
-
-    const WINDOW = 15 * 60 * 1000;   // 15 min
-    const BUCKET = 2 * 60 * 1000;    // 1 min
+    const WINDOW = 15 * 60 * 1000;
+    const BUCKET = 2 * 60 * 1000;
 
     const recent = logs.filter(l => (now - l.timestamp) < WINDOW);
     if (recent.length === 0) return { labels: [], data: [] };
 
     const windowStart = now - WINDOW;
-
     const buckets = [];
+
     for (let t = windowStart; t <= now; t += BUCKET) {
         const date = new Date(t);
         const label = date.getHours().toString().padStart(2, '0') + ':' +
@@ -70,13 +64,11 @@ function prepareChartData() {
         buckets.push({ label, start: t, end: t + BUCKET, times: [] });
     }
 
-    // Logs ko buckets mein daalo
     recent.forEach(log => {
         const b = buckets.find(b => log.timestamp >= b.start && log.timestamp < b.end);
         if (b) b.times.push(log.time);
     });
 
-    // Average nikalo
     let lastValue = 0;
     const labels = buckets.map(b => b.label);
     const data = buckets.map(b => {
@@ -107,15 +99,10 @@ function renderSlowest() {
     }
 
     const group = {};
-
     logs.forEach(log => {
         const key = log.method + ' ' + log.url;
         if (!group[key]) {
-            group[key] = {
-                method: log.method,
-                url: log.url,
-                times: []
-            };
+            group[key] = { method: log.method, url: log.url, times: [] };
         }
         group[key].times.push(log.time);
     });
@@ -138,14 +125,9 @@ function renderSlowest() {
 
     el.innerHTML = top5.map(item => {
         const width = (item.avg / maxTime) * 100;
-
         let shortUrl = item.url;
-        try {
-            shortUrl = new URL(item.url).pathname;
-        } catch (e) {}
-        if (shortUrl.length > 18) {
-            shortUrl = shortUrl.substring(0, 18) + '...';
-        }
+        try { shortUrl = new URL(item.url).pathname; } catch (e) {}
+        if (shortUrl.length > 18) shortUrl = shortUrl.substring(0, 18) + '...';
 
         return `
             <div class="slowest-item">
@@ -162,7 +144,6 @@ function renderSlowest() {
 
 function renderStats() {
     const logs = JSON.parse(localStorage.getItem('apibreak_logs')) || [];
-
     const total = logs.length;
     const failed = logs.filter(l => !l.success).length;
     const avg = total ? Math.round(logs.reduce((a, b) => a + b.time, 0) / total) : 0;
@@ -186,10 +167,7 @@ function renderIssues() {
     const el = document.getElementById('recentIssues');
     if (!el) return;
 
-    const failed = logs
-        .filter(l => !l.success)
-        .reverse()
-        .slice(0, 4);
+    const failed = logs.filter(l => !l.success).reverse().slice(0, 4);
 
     if (failed.length === 0) {
         el.innerHTML = '<p class="empty">No issue 🎉</p>';
@@ -198,12 +176,8 @@ function renderIssues() {
 
     el.innerHTML = failed.map(log => {
         let shortUrl = log.url;
-        try {
-            shortUrl = new URL(log.url).pathname;
-        } catch (e) {}
-        if (shortUrl.length > 20) {
-            shortUrl = shortUrl.substring(0, 20) + '...';
-        }
+        try { shortUrl = new URL(log.url).pathname; } catch (e) {}
+        if (shortUrl.length > 20) shortUrl = shortUrl.substring(0, 20) + '...';
 
         const ago = timeAgo(log.timestamp);
 
@@ -244,12 +218,8 @@ function renderLiveFeed() {
 
     el.innerHTML = recent.map(log => {
         let shortUrl = log.url;
-        try {
-            shortUrl = new URL(log.url).pathname;
-        } catch (e) {}
-        if (shortUrl.length > 25) {
-            shortUrl = shortUrl.substring(0, 25) + '...';
-        }
+        try { shortUrl = new URL(log.url).pathname; } catch (e) {}
+        if (shortUrl.length > 25) shortUrl = shortUrl.substring(0, 25) + '...';
 
         const time = new Date(log.timestamp).toLocaleTimeString();
 
@@ -277,19 +247,49 @@ function renderLiveFeed() {
     }).join('');
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    initChart();
+function showToast(message) {
+    const toast = document.createElement('div');
+    toast.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #4af, #a4f);
+        color: white;
+        padding: 14px 20px;
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: 600;
+        z-index: 99999;
+        box-shadow: 0 8px 32px rgba(68,170,255,0.4);
+        animation: slideIn 0.3s ease;
+    `;
+    toast.innerText = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+}
+
+function renderAll() {
     updateChart();
     renderSlowest();
     renderStats();
     renderIssues();
     renderLiveFeed();
+}
 
-    setInterval(() => {
-        updateChart();
-        renderSlowest();
-        renderStats();
-        renderIssues();
-        renderLiveFeed();
-    }, 3000);
+window.addEventListener('storage', (event) => {
+    if (event.key === 'apibreak_logs') {
+        renderAll();
+        showToast('📡 New API call detected!');
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const style = document.createElement('style');
+    style.textContent = `@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }`;
+    document.head.appendChild(style);
+
+    initChart();
+    renderAll();
+
+    setInterval(renderAll, 3000);
 });
