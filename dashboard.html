@@ -12,13 +12,12 @@
 
 <body>
 
-    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-brand">
             <span class="nav-logo">⚡</span>
             <span class="nav-title">APIBreak</span>
         </div>
-
+    
         <ul class="nav-links" id="navLinks">
             <li><a href="dashboard.html" class="active">Dashboard</a></li>
             <li><a href="logs.html">Logs</a></li>
@@ -27,12 +26,19 @@
             <li><a href="demo.html">Demo</a></li>
             <li><a href="landingpage.html">Home</a></li>
         </ul>
-
-        <div class="nav-status">
-            <span class="live-dot"></span> LIVE
+    
+        <div class="nav-right">
+            <div class="nav-status">
+                <span class="live-dot"></span> LIVE
+            </div>
+    
+            <div class="nav-user">
+                <span class="user-name" id="userName">User</span>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+    
+            <button class="nav-toggle" onclick="toggleNav()">☰</button>
         </div>
-
-        <button class="nav-toggle" onclick="toggleNav()">☰</button>
     </nav>
     <div class="dashboard-header">
         <h1>📊 Dashboard</h1>
@@ -90,12 +96,22 @@
 
     </div>
 
+    <script src="auth.js"></script>
+    <script>
+        const user = requireAuth();
+        if (user) {
+            document.getElementById('userName').innerText = user.name;
+        }
+    </script>
+
     <script src="dashScript.js"></script>
     <script>
         function toggleNav() {
             document.getElementById('navLinks').classList.toggle('active');
         }
     </script>
+
+    
 </body>
 
 </html>

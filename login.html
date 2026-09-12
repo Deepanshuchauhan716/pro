@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — APIBreak</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <div class="login-header">
+            <div class="logo">⚡</div>
+            <h1>APIBreak</h1>
+            <p>Sign in to your dashboard</p>
+        </div>
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('login')">Login</button>
+            <button class="tab" onclick="switchTab('signup')">Sign Up</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="form active" onsubmit="handleLogin(event)">
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" id="loginEmail" placeholder="you@example.com" required>
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="loginPassword" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn-primary">Sign In</button>
+            <p class="form-footer">
+                <a onclick="switchTab('signup')">Sign up</a>
+            </p>
+        </form>
+
+        <!-- Signup Form -->
+        <form id="signupForm" class="form" onsubmit="handleSignup(event)">
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" id="signupName" placeholder="Rahul Sharma" required>
+            </div>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" id="signupEmail" placeholder="you@example.com" required>
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="signupPassword" placeholder="Min 6 characters" minlength="6" required>
+            </div>
+            <button type="submit" class="btn-primary">Create Account</button>
+            <p class="form-footer">
+                <a onclick="switchTab('login')">Login</a>
+            </p>
+        </form>
+
+        <div id="message" class="message"></div>
+
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+
+</html>
