@@ -1,5 +1,5 @@
 {
-    "name": "APIBreak",
+    "name": "APIBreak — API Monitor",
     "short_name": "APIBreak",
     "description": "Zero-config API monitoring for developers",
     "start_url": "./landingpage.html",
@@ -9,7 +9,12 @@
     "icons": [
         {
             "src": "apibreak.jpeg",
-            "sizes": "any",
+            "sizes": "192x192",
+            "type": "image/jpeg"
+        },
+        {
+            "src": "apibreak.jpeg",
+            "sizes": "512x512",
             "type": "image/jpeg"
         }
     ]
