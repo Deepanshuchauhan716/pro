@@ -1,5 +1,5 @@
 {
-    "name": "APIBreak — API Monitor",
+    "name": "APIBreak",
     "short_name": "APIBreak",
     "description": "Zero-config API monitoring for developers",
     "start_url": "./landingpage.html",
