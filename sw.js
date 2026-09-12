@@ -20,7 +20,7 @@ const urlsToCache = [
     './alert.js',
     './demo.js',
     './apibreak.js',
-    './menifest.json',
+    './manifest.json',
     './apibreak.jpeg'
 ];
 
