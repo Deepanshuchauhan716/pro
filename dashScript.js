@@ -268,6 +268,58 @@ function showToast(message) {
     setTimeout(() => toast.remove(), 3000);
 }
 
+function exportPDF() {
+    const element = document.querySelector('.container');
+
+    if (!element) {
+        alert('Dashboard not found!');
+        return;
+    }
+
+    const btn = document.querySelector('.btn-export');
+    if (btn) {
+        btn.disabled = true;
+        btn.innerText = '⏳ Generating...';
+    }
+
+    const options = {
+        margin: 5,
+        filename: 'apibreak-report-' + new Date().toISOString().slice(0, 10) + '.pdf',
+        image: { type: 'jpeg', quality: 0.85 },
+        html2canvas: {
+            scale: 0.7,
+            backgroundColor: '#0a0a1a',
+            useCORS: true,
+            logging: false
+        },
+        jsPDF: {
+            unit: 'mm',
+            format: 'a4',
+            orientation: 'portrait'
+        }
+    };
+
+    html2pdf()
+        .set(options)
+        .from(element)
+        .save()
+        .then(() => {
+            if (btn) {
+                btn.disabled = false;
+                btn.innerText = '📄 Export PDF';
+            }
+            console.log('✅ PDF exported successfully');
+        })
+        .catch((err) => {
+            console.error('❌ PDF export failed:', err);
+            if (btn) {
+                btn.disabled = false;
+                btn.innerText = '📄 Export PDF';
+            }
+            alert('PDF export failed. Try again.');
+        });
+}
+
 function renderAll() {
     updateChart();
     renderSlowest();

@@ -7,6 +7,7 @@
     <title>Dashboard — APIBreak</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
 </head>
 
 <body>
@@ -33,10 +34,14 @@
 
         <button class="nav-toggle" onclick="toggleNav()">☰</button>
     </nav>
-
+    <div class="dashboard-header">
+        <h1>📊 Dashboard</h1>
+        <button onclick="exportPDF()" class="btn-export">
+            📄 Export PDF
+        </button>
+    </div>
     <div class="container">
 
-        <!-- STATS CARDS -->
         <div class="box total">
             <div class="stat-label">TOTAL</div>
             <div class="stat-value" id="totalValue">0</div>
