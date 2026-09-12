@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>APIBreak — Monitor Your APIs</title>
     <link rel="stylesheet" href="landingpage.css">
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#4af">
+    <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
 <body>
     <nav class="nav-bar">
@@ -283,12 +286,22 @@
             <div class="footer-bottom">
                 <p>© 2026 APIBreak. Built with ❤️ for developers.</p>
             </div>
-        </footer>
-</body>
-<script>
+        </footer><script>
     function toggleMenu() {
         const navLinks = document.querySelector('.nav-links');
         navLinks.classList.toggle('active');
     }
 </script>
+
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+                .then((reg) => console.log('✅ Service Worker registered'))
+                .catch((err) => console.log('❌ SW error:', err));
+        });
+    }
+</script>
+</body>
+
 </html>
